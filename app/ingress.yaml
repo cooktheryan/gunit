@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gunit
+  namespace: my-go-app
+  labels:
+    app: gunit
+    app.kubernetes.io/component: backstage
+    backstage.io/kubernetes-id: my-go-app
+spec:
+  - host: 
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: gunit
+              port:
+                number: 8080
